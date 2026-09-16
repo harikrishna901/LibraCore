@@ -1,5 +1,14 @@
+const dns = require("dns");
+dns.setServers(["8.8.8.8"]);
+require('dotenv').config();
 const app = require('./app');
-const PORT = 5000;
-app.listen(PORT,()=>{
+const connectDB = require('./src/config/db');
+const PORT = process.env.PORT || 5000;
+const startServer = async ()=>{
+    await connectDB();
+    app.listen(PORT,()=>{
     console.log(`Server Running Successfully..${PORT}`);
 })
+}
+startServer();
+
