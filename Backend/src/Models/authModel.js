@@ -2,17 +2,20 @@ const mongoose = require('mongoose');
 const authSchema = new mongoose.Schema({
     name:{
         type:String,
-        trim:true
+        trim:true,
+        required:true
     },
     email:{
         type:String,
+        unique:true,
+        required:true,
+        lowercase:true,
+
     },
-    password:{
-        type:String,
-    },
-    confirmpassword:{
+    hashpassword:{
+        required:true,
         type:String
-    },
-});
-const authModel = mongoose.model("authModel",authSchema,"Members");
+    }
+},{timestamps:true});
+const authModel = mongoose.model("authModel",authSchema,"Member");
 module.exports = authModel;
