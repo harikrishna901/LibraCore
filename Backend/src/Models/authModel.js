@@ -15,6 +15,11 @@ const authSchema = new mongoose.Schema({
     hashpassword:{
         required:true,
         type:String
+    },
+    refreshToken:{
+        required:true,
+        type:String
+
     }
 },{timestamps:true});
 const authModel = mongoose.model("authModel",authSchema,"Member");
