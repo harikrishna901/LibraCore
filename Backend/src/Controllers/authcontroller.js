@@ -1,4 +1,4 @@
-const {registerService,loginService} = require('../Services/authService');
+const {registerService,loginService,refreshService} = require('../Services/authService');
 const ApiError = require("../utils/ApiError");
 const register = async (req,res)=>{
     const {name,email,password,confirmpassword} = req.body;
@@ -22,13 +22,13 @@ const login=async (req,res)=>{
 const dashboard=async (req,res)=>{
         res.status(200).json({success:true,message:"welcome to dashboard.."});
 }
-const refreshtoken = (req,res)=>{
+const refreshtoken = async (req,res)=>{
     const refreshToken=req.cookies.refreshToken;
-    const result = refreshService(refreshToken);
+    const result = await refreshService(refreshToken);
     if(!result){
         throw new ApiError(500,"Failed.");
     }
-    res.status(200).json({success:true,newaccesstoken:result.newaccesstoken,message:"new access token created.."});
+    res.status(200).json({success:true,accesstoken:result.accesstoken});
 
 }
 const logout = (req,res)=>{

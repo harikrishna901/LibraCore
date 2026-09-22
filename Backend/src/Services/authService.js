@@ -44,17 +44,13 @@ const loginService = async (email,password)=>{
 }
 const refreshService =async (refreshToken)=>{
     try{
-    const verify = jwt.verify(refreshToken,process.env.JWT_REFRESH_SECRET_KEY);
-    const user = await authModel.findById(verify._id);
-
-    if(!verify){
-        throw new ApiError(400,"refresh token verification failed..");
-    }
+    const Verify =  jsontoken.verify(refreshToken,process.env.JWT_REFRESH_SECRET_KEY);
+    const user = await authModel.findById(Verify.userid);
      if(user.refreshToken!==refreshToken){
         throw new ApiError(400,"refresh token invalid.");
     }
-    const newaccesstoken = jwt.sign({userid:user._id},process.env.JWT_ACCESS_SECRET_KEY,{expiresIn:JWT_ACCESS_EXPIRES_IN});
-    return newaccesstoken;
+    const newaccesstoken = jsontoken.sign({userid:user._id},process.env.JWT_ACCESS_SECRET_KEY,{expiresIn:process.env.JWT_ACCESS_EXPIRES_IN});
+    return {accesstoken:newaccesstoken,message:"new access token created."};
     }catch(error){
         throw new ApiError(400,error.message);
 
@@ -64,4 +60,4 @@ const refreshService =async (refreshToken)=>{
 }
 
 
-module.exports={registerService,loginService};
+module.exports={registerService,loginService,refreshService};
