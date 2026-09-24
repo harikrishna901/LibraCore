@@ -12,8 +12,8 @@ const authenticate = (req,res,next)=>{
                 throw new ApiError(400,"Invalid auth header..");
             }
             const token = authheader[1];
-            const result = jsontoken.verify(token,process.env.JWT_SECRET_KEY);
-            req.user = result;
+            const result = jsontoken.verify(token,process.env.JWT_ACCESS_SECRET_KEY);
+            req.user=result;
             next();
         }catch(error){
             throw new ApiError(500,error.message);

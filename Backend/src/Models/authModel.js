@@ -12,13 +12,20 @@ const authSchema = new mongoose.Schema({
         lowercase:true,
 
     },
+    role:{
+        type:String,
+        required:true,
+        enum:["student","librarian","admin"],
+        lowercase:true
+    },
     hashpassword:{
         required:true,
         type:String
     },
     refreshToken:{
         required:true,
-        type:String
+        type:String,
+        default:"refreshtoken",
 
     }
 },{timestamps:true});

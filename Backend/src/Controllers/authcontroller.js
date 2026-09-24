@@ -1,8 +1,8 @@
 const {registerService,loginService,refreshService} = require('../Services/authService');
 const ApiError = require("../utils/ApiError");
 const register = async (req,res)=>{
-    const {name,email,password,confirmpassword} = req.body;
-    const user = await registerService(name,email,password,confirmpassword);
+    const {name,email,role,password,confirmpassword} = req.body;
+    const user = await registerService(name,email,role,password,confirmpassword);
     if(!user){
         throw new ApiError(502,"Creation Failed..");
     }
@@ -19,8 +19,8 @@ const login=async (req,res)=>{
     res.status(200).json({success:true,message:"login Successful",email:loginuser.email,accesstoken:loginuser.accesstoken});
 
 }
-const dashboard=async (req,res)=>{
-        res.status(200).json({success:true,message:"welcome to dashboard.."});
+const readbook=async (req,res)=>{
+        res.status(200).json({success:true,message:"Authorization successful , you can read the book."});
 }
 const refreshtoken = async (req,res)=>{
     const refreshToken=req.cookies.refreshToken;
@@ -34,4 +34,4 @@ const refreshtoken = async (req,res)=>{
 const logout = (req,res)=>{
 
 }
-module.exports = {register,login , refreshtoken,logout,dashboard};
+module.exports = {register,login , refreshtoken,logout,readbook};
