@@ -20,7 +20,7 @@ const login=async (req,res)=>{
 
 }
 const readbook=async (req,res)=>{
-        res.status(200).json({success:true,message:"Authorization successful , you can read the book."});
+        res.status(200).json({success:true,message:"read book successful , you can read the book."});
 }
 const refreshtoken = async (req,res)=>{
     const refreshToken=req.cookies.refreshToken;
