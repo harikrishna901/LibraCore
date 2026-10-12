@@ -5,11 +5,18 @@ const {PERMISSIONS} = require('../consonants/permissions');
 const {validate} = require('../Middlewares/validate');
 const {authenticate} = require('../Middlewares/authenticate');
 const {authorize} = require('../Middlewares/authorize');
-const {register,login , refreshtoken , logout,readbook} = require('../Controllers/authcontroller');
+const {register,login , refreshtoken , logout} = require('../Controllers/authcontroller');
+const {CreateBook,ReadBook,PutBook,PatchBook,DeleteBook} = require('../Controllers/BookController');
+//Auth//
 router.post("/register",validate(registerSchema),register);
 router.post("/login",validate(loginSchema),login);
 router.get("/refresh",refreshtoken);
-router.get("/readbook",authenticate,authorize("get:/id_book"),readbook);
+//Books//
+router.post("/createBook",authenticate,authorize("post:/create"),CreateBook);
+router.get("/ReadBook",authenticate,authorize("get:/id_book"),ReadBook);
+router.put("/PutBook",authenticate,authorize("put:/update"),PutBook);
+router.patch("/PatchBook",authenticate,authorize("patch:/update"),PatchBook);
+router.delete("/DeleteBook",authenticate,authorize("delete:/delete"),DeleteBook);
 
 module.exports=router;
 

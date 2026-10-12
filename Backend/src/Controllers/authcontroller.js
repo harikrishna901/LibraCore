@@ -19,9 +19,6 @@ const login=async (req,res)=>{
     res.status(200).json({success:true,message:"login Successful",email:loginuser.email,accesstoken:loginuser.accesstoken});
 
 }
-const readbook=async (req,res)=>{
-        res.status(200).json({success:true,message:"read book successful , you can read the book."});
-}
 const refreshtoken = async (req,res)=>{
     const refreshToken=req.cookies.refreshToken;
     const result = await refreshService(refreshToken);
@@ -34,4 +31,4 @@ const refreshtoken = async (req,res)=>{
 const logout = (req,res)=>{
 
 }
-module.exports = {register,login , refreshtoken,logout,readbook};
+module.exports = {register,login , refreshtoken,logout};

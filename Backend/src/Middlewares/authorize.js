@@ -11,7 +11,6 @@ const authorize =(permissions)=>{
             throw new ApiError(403,"Role not Found..");
         }
         const haspermission =hasrole.includes(permissions);
-        console.log(haspermission);
         if(!haspermission){
             throw new ApiError(403,"forbidden permission not allowed..");
         }
