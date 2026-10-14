@@ -1,6 +1,6 @@
 const {PERMISSIONS} = require("./permissions");
 const ROLE_PERMISSIONS = {
-    student:[
+    member:[
         PERMISSIONS.READ_MEMBER,
         PERMISSIONS.PUT_MEMBER,
         PERMISSIONS.PATCH_MEMBER,

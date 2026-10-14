@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {registerSchema,loginSchema} = require('../Validators/authSchema');
+const {createBookSchema} = require("../Validators/BookSchema");
 const {PERMISSIONS} = require('../consonants/permissions');
 const {validate} = require('../Middlewares/validate');
 const {authenticate} = require('../Middlewares/authenticate');
@@ -12,7 +13,7 @@ router.post("/register",validate(registerSchema),register);
 router.post("/login",validate(loginSchema),login);
 router.get("/refresh",refreshtoken);
 //Books//
-router.post("/createBook",authenticate,authorize("post:/create_book"),CreateBook);
+router.post("/createBook",authenticate,authorize("post:/create_book"),validate(createBookSchema),CreateBook);
 router.get("/ReadBook",authenticate,authorize("get:/id_book"),ReadBook);
 router.put("/PutBook",authenticate,authorize("put:/update_book"),PutBook);
 router.patch("/PatchBook",authenticate,authorize("patch:/update_book"),PatchBook);

@@ -3,7 +3,7 @@ const BookSchema = new mongoose.Schema({
     Title:{
         type:String,
         required:true,
-        maxlength:10000,
+        maxlength:100,
         trim:true
     },
     isbn10:{
@@ -19,7 +19,7 @@ const BookSchema = new mongoose.Schema({
     description:{
          type:String,
         required:true,
-        maxlength:20000,
+        maxlength:2000,
         trim:true
     },
     publishedYear:{

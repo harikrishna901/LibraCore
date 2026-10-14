@@ -8,7 +8,7 @@ const registerSchema =z.object({
         email:z.string()
             .trim()
             .email("invalid email"),
-        role:z.enum(["student","admin","librarian"]),
+        role:z.enum(["member","admin","librarian"]),
         password:z.string()
                 .min(3)
                 .max(15),
