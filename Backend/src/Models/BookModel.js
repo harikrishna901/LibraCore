@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-console.log("entered book model.");
 const BookSchema = new mongoose.Schema({
     Title:{
         type:String,
@@ -88,5 +87,4 @@ const BookSchema = new mongoose.Schema({
 
 },{timestamps:true});
 const BookModel = mongoose.model("BookModel",BookSchema,"Books");
-console.log("ended book model.");
 module.exports = {BookModel};

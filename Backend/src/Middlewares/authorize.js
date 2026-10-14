@@ -2,6 +2,7 @@ const ApiError = require("../utils/ApiError")
 const {ROLE_PERMISSIONS} = require("../consonants/rolepermissions");
 
 const authorize =(permissions)=>{
+    console.log(permissions);
     return(req,res,next)=>{
         if(!req.user){
             throw new ApiError(401,"Authentication Required..");
