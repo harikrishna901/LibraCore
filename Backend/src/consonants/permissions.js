@@ -1,5 +1,5 @@
 const PERMISSIONS = {
-    CREATE_MEMBER:"post:/create_member",
+    CREATE_PROFILE:"post:/create_profile",
     READ_MEMBER:"get:/id_member",
     PUT_MEMBER:"put:/update_member",
     PATCH_MEMBER:"patch:/update_member",

@@ -1,6 +1,7 @@
 const {PERMISSIONS} = require("./permissions");
 const ROLE_PERMISSIONS = {
     member:[
+        PERMISSIONS.CREATE_PROFILE,
         PERMISSIONS.READ_MEMBER,
         PERMISSIONS.PUT_MEMBER,
         PERMISSIONS.PATCH_MEMBER,

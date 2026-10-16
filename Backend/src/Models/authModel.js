@@ -5,17 +5,17 @@ const authSchema = new mongoose.Schema({
         trim:true,
         required:true
     },
-    email:{
-        type:String,
-        unique:true,
-        required:true,
-        lowercase:true,
-
-    },
+   email: {
+   type: String,
+   required: true,
+   trim: true,
+   lowercase: true,
+   match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+},
     role:{
         type:String,
         required:true,
-        enum:["student","librarian","admin"],
+        enum:["member","librarian","admin"],
         lowercase:true
     },
     hashpassword:{

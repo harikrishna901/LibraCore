@@ -4,6 +4,7 @@ const globalerrorhandler = (err,req,res,next)=>{
     return res.status(statusCode).json({success:false,message:"validation failed" , error:err.message||"Invalid data"});
   
     }
+    console.log(err);
     statusCode = err.statusCode || 500;
     return res.status(statusCode).json({success:false,message:err.message||"internal server Error."});
 
