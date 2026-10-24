@@ -1,23 +1,8 @@
 const mongoose = require("mongoose");
+const { optional } = require("zod");
 
 const MemberSchema = new mongoose.Schema(
   {
-    UserName: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 3,
-      maxlength: 30,
-      unique: true
-    },
-   email: {
-   type: String,
-   required: true,
-   trim: true,
-   lowercase: true,
-   match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-},
-
     PhoneNo: {
       type: String,
       required: true,

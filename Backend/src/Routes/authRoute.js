@@ -27,7 +27,7 @@ router.delete("/DeleteBook",authenticate,authorize("delete:/delete_book"),Delete
 router.post("/createprofile",authenticate,authorize("post:/create_profile"),validate(profileCreateSchema),CreateProfile);
 router.get("/readprofile",authenticate,authorize(),ReadProfile);
 router.put("/putprofile",authenticate,authorize(),PutProfile);
-router.patch("/deleteprofile",authenticate,authorize(),PatchProfile);
+router.patch("/patchprofile",authenticate,authorize(),PatchProfile);
 
 module.exports=router;
 

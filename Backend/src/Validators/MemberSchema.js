@@ -3,11 +3,6 @@ const { z } = require("zod");
 
 const profileCreateSchema = z.object({
   body: z.object({
-    UserName: z
-      .string()
-      .trim()
-      .min(3, "Username must contain at least 3 characters")
-      .max(30, "Username cannot exceed 30 characters"),
 
     PhoneNo: z
       .string()
