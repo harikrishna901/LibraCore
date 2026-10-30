@@ -3,7 +3,7 @@ const router = express.Router();
 //Schemas//
 const {registerSchema,loginSchema} = require('../Validators/authSchema');
 const {createBookSchema} = require("../Validators/BookSchema");
-const {profileCreateSchema} = require("../Validators/MemberSchema");
+const {profileCreateSchema,ReadProfileSchema,PutProfileSchema,PatchProfileSchema} = require("../Validators/MemberSchema");
 const {PERMISSIONS} = require('../consonants/permissions');
 //Authentication//
 const {validate} = require('../Middlewares/validate');
@@ -24,11 +24,11 @@ router.put("/PutBook",authenticate,authorize("put:/update_book"),PutBook);
 router.patch("/PatchBook",authenticate,authorize("patch:/update_book"),PatchBook);
 router.delete("/DeleteBook",authenticate,authorize("delete:/delete_book"),DeleteBook);
 //Members//
-router.post("/createprofile",authenticate,authorize("post:/create_profile"),validate(profileCreateSchema),CreateProfile);
-router.get("/readprofile",authenticate,authorize(),ReadProfile);
-router.put("/putprofile",authenticate,authorize(),PutProfile);
-router.patch("/patchprofile",authenticate,authorize(),PatchProfile);
-
+router.post("/CreateProfile",authenticate,authorize("post:/create_profile"),validate(profileCreateSchema),CreateProfile);
+router.get("/ReadProfile/:id",authenticate,authorize("get:/id_member"),validate(ReadProfileSchema),ReadProfile);
+router.put("/PutProfile/:id",authenticate,authorize("put:/update_member"),validate(PutProfileSchema),PutProfile);
+router.patch("/PatchProfile/:id",authenticate,authorize("patch:/update_member"),validate(PatchProfileSchema),PatchProfile);
+router.delete("/PatchProfile/:id",authenticate,authorize("patch:/update_member"),validate(PatchProfileSchema),PatchProfile);
 module.exports=router;
 
 

@@ -7,6 +7,7 @@ const MemberSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      unique:true,
       match: /^\+?[1-9]\d{7,14}$/
     },
 

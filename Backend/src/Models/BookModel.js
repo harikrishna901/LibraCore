@@ -9,10 +9,12 @@ const BookSchema = new mongoose.Schema({
     isbn10:{
         type:String,
         required:true,
+        unique:true,
         trim:true
     },
     isbn13:{
         type:String,
+        unique:true,
         required:true,
         trim:true
     },
